@@ -1,16 +1,32 @@
 const randomDie = () => {
-    return(Math.floor(Math.random() * 6));
+    return(Math.ceil(Math.random() * 6));
 };
+
+console.log(randomDie());
 
 const testRandomness = () => {
     var diceCountArray = [0,0,0,0,0,0];
-
-    for (var i = 0; i < 60000000; i++) {
+    
+    for (var i = 0; i < 1000000; i++) {
         var dieNumber = randomDie();
-        diceCountArray[dieNumber]++;
+        diceCountArray[dieNumber-1]++;
     };
-
+    
+    var sortedDiceCountArray = [...diceCountArray];
+    sortedDiceCountArray.sort();
+    sortedDiceCountArray.reverse();
+    var rollRank = [];
+    console.log(sortedDiceCountArray);
+    for (var i = 0; i < 6; i++) {
+        for (var j = 0; j < 6; j++) {
+            if (diceCountArray[j] == sortedDiceCountArray[i]) {
+                rollRank.push(j+1);
+                break;
+            };
+        }
+    }
     console.log(diceCountArray);
+    console.log(rollRank);
 };
 
 const firstRound = () => {
