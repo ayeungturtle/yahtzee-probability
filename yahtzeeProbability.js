@@ -2,31 +2,6 @@ const randomDie = () => {
     return(Math.floor(Math.random() * 6));
 };
 
-const testRandomness = () => {
-    var diceCountArray = [0,0,0,0,0,0];
-    
-    for (var i = 0; i < 1000000; i++) {
-        var dieNumber = randomDie();
-        diceCountArray[dieNumber]++;
-    };
-    
-    var sortedDiceCountArray = [...diceCountArray];
-    sortedDiceCountArray.sort();
-    sortedDiceCountArray.reverse();
-    var rollRank = [];
-    console.log(sortedDiceCountArray);
-    for (var i = 0; i < 6; i++) {
-        for (var j = 0; j < 6; j++) {
-            if (diceCountArray[j] == sortedDiceCountArray[i]) {
-                rollRank.push(j);
-                break;
-            };
-        }
-    }
-    console.log(diceCountArray);
-    console.log(rollRank);
-};
-
 const rollYahtzee = () => {
     var numberCount = [0,0,0,0,0,0]
     var mostFrequentNumber = 0;
@@ -91,6 +66,31 @@ modelProbabilityOfYahtzee();
 // -------------------------------------------------------------------------------------
 //   ARCHIVE BELOW....OLD CODE
 // -------------------------------------------------------------------------------------
+
+const testRandomness = () => {
+    var diceCountArray = [0,0,0,0,0,0];
+    
+    for (var i = 0; i < 1000000; i++) {
+        var dieNumber = randomDie();
+        diceCountArray[dieNumber]++;
+    };
+    
+    var sortedDiceCountArray = [...diceCountArray];
+    sortedDiceCountArray.sort();
+    sortedDiceCountArray.reverse();
+    var rollRank = [];
+    console.log(sortedDiceCountArray);
+    for (var i = 0; i < 6; i++) {
+        for (var j = 0; j < 6; j++) {
+            if (diceCountArray[j] == sortedDiceCountArray[i]) {
+                rollRank.push(j);
+                break;
+            };
+        }
+    }
+    console.log(diceCountArray);
+    console.log(rollRank);
+};
 
 const firstRound = () => {
     var endDice = {
